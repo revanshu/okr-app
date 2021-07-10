@@ -1,6 +1,8 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Application to display OKR(Objectives & Key Results) with following features:
+- List parent OKR's and child OKR's as per the mocks
+- Filter OKR's
+- Error boundary
+- Loading icon when loading the data
 
 ## Available Scripts
 
