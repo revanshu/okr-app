@@ -2,13 +2,7 @@ import React, { useState, useEffect } from 'react'
 import DataConverter from '../utils/data-converter'
 import DropDownComponent from './dropdown-component'
 import LoadingComponent from './loading-component'
-
-interface Okrs {
-  id: string
-  title: string
-  category: string
-  childs: Okrs[]
-}
+import { Okrs } from '../models/models'
 
 export default function OKRComponent() {
   const [okrs, setOkrs] = useState<Okrs[]>([])
@@ -27,11 +21,13 @@ export default function OKRComponent() {
         setOkrs(data)
         setFilteredOkrs(data)
         setFilters(filtersData)
-       // throw new Error();
       })
-    //  .catch((error) => console.log(error))
+      .catch((error) => {/* log error using logger service */})
   }, [])
 
+ /*
+  * Update data based on new filter selection
+  */
   const changeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const filterSelected = event.target.value
     if (filterSelected !== 'All') {
@@ -44,8 +40,14 @@ export default function OKRComponent() {
     }
   }
 
+ /*
+  * Options for filter selections
+  */
   const options = filters.length > 0 ? filters.map((f) => <option key={f}>{f}</option>) : ''
 
+ /*
+  * Okr rows
+  */
   const rows = filteredOkrs.length > 0
       ? filteredOkrs.map((d) => <DropDownComponent data={d} key={d.id} />)
       : <LoadingComponent />

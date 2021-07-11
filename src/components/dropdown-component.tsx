@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../assets/user-solid-circle.svg';
-
-interface Okrs {
-  id: string
-  title: string
-  category: string
-  childs: Okrs[]
-}
+import { Okrs } from '../models/models';
 
 export default function DropDownComponent(props: { data: Okrs }) {
   const [showObjectives, setshowObjectives] = useState(true)
